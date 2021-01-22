@@ -1,6 +1,7 @@
 import React from "react";
 // additonal components //
 import MessagesWindow from "./MessagesWindow";
+import MessagesInput from "../inputs/MessagesInput";
 // css imports //
 import styles from "./css/messagesContainer.css";
 
@@ -31,6 +32,7 @@ class MessagesContainer extends React.Component<Props, State> {
     return (
       <div className={ styles.messagesContainer }>
         <MessagesWindow messages={ this.state.messages } />
+        <MessagesInput />
       </div>
     )
   }

@@ -1,0 +1,8 @@
+.sendMessageButton {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 18%;
+  border: 1px solid grey;
+  cursor: pointer;
+}

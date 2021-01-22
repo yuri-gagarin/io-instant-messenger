@@ -1,0 +1,15 @@
+.messagesInputDiv {
+  width: 90%;
+  border: 1px solid blue;
+}
+
+.messagesInputSpan {
+  width: 100%;
+  position: relative;
+}
+
+.messagesInputTag { 
+  width: 80%;
+  height: 100%;
+  overflow-wrap: break-word;
+}
