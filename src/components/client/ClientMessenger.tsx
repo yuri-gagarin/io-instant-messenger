@@ -8,19 +8,19 @@ type ClientMessengerProps = {
 }
 
 type ClientMessengerState = {
-  messagesContainerVisible: boolean;
+  conversationOpen: boolean;
 }
 class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessengerState> {
   constructor(props: ClientMessengerProps) {
     super(props);
     this.state = {
-      messagesContainerVisible: true
+      conversationOpen: true
     }
   }
   
   toggleConversation = () => {
     this.setState({
-      messagesContainerVisible: !this.state.messagesContainerVisible
+      conversationOpen: !this.state.conversationOpen
     });
   }
   
@@ -29,9 +29,12 @@ class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessen
     console.log(this.state)
     return (
       <div>
-        <ClientFooter toggleConversation={ this.toggleConversation } />
+        <ClientFooter 
+          toggleConversation={ this.toggleConversation } 
+          conversationOpen={ this.state.conversationOpen }
+        />
         {
-          this.state.messagesContainerVisible ? <MessagesContainer messages={[]} /> : null
+          this.state.conversationOpen ? <MessagesContainer open={this.state.conversationOpen} messages={[]} /> : null
         }
       </div>
     );

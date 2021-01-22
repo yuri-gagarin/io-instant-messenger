@@ -1,6 +1,6 @@
 import React from "react";
 // styles and css //
-import styles from "./css/sendMessageButton.css";
+import styles from "./css/sendMessageButton.module.css";
 
 type Props = {
   text: string;

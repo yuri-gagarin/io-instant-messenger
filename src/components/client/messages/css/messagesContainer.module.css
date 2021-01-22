@@ -1,0 +1,39 @@
+.messagesContainer {
+  height: 300px;
+  width: 250px;
+  padding-top: 10px;
+  border: 1px solid red;
+  position: fixed;
+  right: 1em;
+  bottom: -290px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideMessageContainer 0.25s linear;
+}
+.opened {
+  bottom: 60px;
+}
+.closed {
+  animation: slideMessageContainerClose 1s linear;
+}
+
+@keyframes slideMessageContainer {
+  from {
+    bottom: -300px;
+  }
+  to {
+    bottom: 60px;
+  }
+}
+
+@keyframes slideMesageContainerClose {
+  from {
+    bottom: 60px;
+  }
+  to { 
+    bottom: 0px;
+  }
+}
+

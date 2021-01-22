@@ -1,0 +1,19 @@
+#closeFooterBtnContainer {
+  display: flex;
+  border: 1px solid grey;
+  width: auto;
+  padding: 0.25em;
+  align-items: center;
+  justify-content: center;
+}
+
+#closeFooterBtnContainer > i {
+  color: red;
+  font-size: 2em;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+
+#closeFooterBtnContainer > i:hover {
+  transform: rotate(90deg);
+}

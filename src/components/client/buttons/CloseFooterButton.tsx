@@ -1,6 +1,6 @@
 import React from "react";
 // style imports //
-import styles from "./css/closeFooterBtn.css";
+import styles from "./css/closeFooterBtn.module.css";
 
 type Props = {
   closeFooter(): void;
@@ -9,7 +9,7 @@ type Props = {
 const ClientCloseFooterBtn: React.FC<Props> = ({ closeFooter }) => {
   return (
     <div id={ styles.closeFooterBtnContainer } onClick={ closeFooter }>
-      <span>X</span>
+      <i className="far fa-times-circle"></i>
     </div>
   )
 };

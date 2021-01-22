@@ -1,0 +1,41 @@
+#clientToggleConversationBtn {
+  display: flex;
+  width: auto;
+  height: 40px;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  margin-right: 1em;
+  border: 2.5px solid var(--toggle-msg-btn-border-color);
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+}
+#clientToggleConversationBtn:hover {
+  border-color: var(--toggle-msg-btn-border-color-hover);
+}
+#clientToggleConversationBtn > span {
+  margin-right: 0.25em;
+  font-weight: bold;
+}
+#clientToggleConversationBtn > i {
+  font-size: 1.25em;
+}
+.animateIcon {
+  animation: tiltIconBackAndForth 1s linear;
+}
+
+@keyframes tiltIconBackAndForth {
+  25% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

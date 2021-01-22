@@ -2,7 +2,7 @@ import React from "react";
 // additional components //
 import SendMessageBtn from "../buttons/SendMessageBtn";
 // css and styles //
-import style from "./css/messageInput.css";
+import style from "./css/messageInput.module.css";
 
 const MessageInput: React.FC<{}> = ({}) => {
   const keyPress = (e: React.KeyboardEvent) => {

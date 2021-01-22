@@ -1,35 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 // styles and css //
-import styles from "./css/toggleConversationBtn.css";
+import styles from "./css/toggleConversationBtn.module.css";
 
-type ButtonState = {
-  backgroundColor: string;
-}
-type ButtonProps = {
+type Props = {
   conversationOpen: boolean;
   buttonText: string;
   toggleConversation(): void;
 }
+type LocalState = {
+  mouseEntered: boolean;
+  animateClass: string | "";
+}
 
-class ClientToggleConversationBtn extends React.Component<ButtonProps, ButtonState> {
-  constructor(props: ButtonProps) {
-    super(props)
-  }
-  state = {
-    backgroundColor: "white"
-  }
+const  ClientToggleConversationBtn: React.FC<Props> = ({ conversationOpen, buttonText, toggleConversation }): JSX.Element => {
+  const [ localState, setLocalState ] = useState<LocalState>({ mouseEntered: false, animateClass: "" });
 
-  render() {
-    return (
-      <div 
-        id={styles.clientToggleConversationBtn}
-        style={{ backgroundColor: this.state.backgroundColor }}
-        onClick={ this.props.toggleConversation }
-      >
-        <div>{ this.props.buttonText }</div>
-      </div>
-    )
-  }
+  const listenForMouseEnter = () => {
+    setLocalState({ mouseEntered: true, animateClass: styles.animateIcon });
+  };
+  const listenForMouseLeave = () => {
+    setLocalState({ mouseEntered: false, animateClass: "" });
+  };
+  
+  return (
+    <div 
+      id={styles.clientToggleConversationBtn}
+      onClick={ toggleConversation }
+      onMouseEnter={ listenForMouseEnter }
+      onMouseLeave={ listenForMouseLeave }
+    >
+      <span>{ buttonText }</span>
+      {
+        conversationOpen ? 
+          <i className={ `${styles.messageIcon} ${localState.animateClass} fas fa-times` }></i> 
+          : 
+          <i className={ `${styles.messageIcon} ${localState.animateClass} far fa-comment-dots` }></i>
+        
+      }
+    </div>
+  );
+  
 };
 
 export default ClientToggleConversationBtn;

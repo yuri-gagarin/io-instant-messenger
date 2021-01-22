@@ -1,11 +1,15 @@
 import React from "react";
-import styles from "./css/footerStyles.css";
 // additional components //
 import ToggleConversation from "../buttons/ToggleConversations";
 import CloseFooterBtn from "../buttons/CloseFooterButton";
+import UIComponents from "../ui_components/UIComponents";
+// styles and css //
+import styles from "./css/footerStyles.module.css";
+
 
 type ClientFooterProps = {
   toggleConversation(): void;
+  conversationOpen: boolean;
 }
 
 class ClientFooterContainer extends React.Component<ClientFooterProps> {
@@ -18,17 +22,21 @@ class ClientFooterContainer extends React.Component<ClientFooterProps> {
   }
 
   render() {
-    const { toggleConversation } = this.props;
+    const { toggleConversation, conversationOpen } = this.props;
     return (
-      <div id={styles.clientFooterContainer}>
+      <div id={ styles.clientFooterContainer }>
         <CloseFooterBtn 
           closeFooter={ this.closeFooter }
         />
-        <ToggleConversation 
-          conversationOpen={ false } 
-          buttonText={ "Toggle Conversation" }
-          toggleConversation={ toggleConversation }
-        />
+        <div className={ styles.pushRight }>
+          <UIComponents />
+          <ToggleConversation 
+            conversationOpen={ conversationOpen } 
+            buttonText={ conversationOpen ? 'Close' : 'Open' }
+            toggleConversation={ toggleConversation }
+          />
+        </div>
+        
       </div>
     );
   }

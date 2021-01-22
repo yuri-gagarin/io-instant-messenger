@@ -1,0 +1,17 @@
+#clientFooterContainer {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  border: 1px solid grey;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  align-items: center;
+}
+.pushRight {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
