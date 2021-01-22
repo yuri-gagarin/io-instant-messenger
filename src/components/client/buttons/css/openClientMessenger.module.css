@@ -1,0 +1,12 @@
+.openClientMessengerContainer {
+  background-color: transparent;
+  font-size: 2.5em;
+  display: flex;
+  align-items: center;
+  color: green;
+}
+
+.openClientMessengerContainer > i {
+  margin-left: auto;
+  cursor: pointer;
+}

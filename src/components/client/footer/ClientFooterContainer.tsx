@@ -9,7 +9,9 @@ import styles from "./css/footerStyles.module.css";
 
 type ClientFooterProps = {
   toggleConversation(): void;
+  toggleClientMessenger(): void;
   conversationOpen: boolean;
+  clientMessengerOpen: boolean;
 }
 
 class ClientFooterContainer extends React.Component<ClientFooterProps> {
@@ -22,11 +24,11 @@ class ClientFooterContainer extends React.Component<ClientFooterProps> {
   }
 
   render() {
-    const { toggleConversation, conversationOpen } = this.props;
+    const { toggleConversation, toggleClientMessenger, conversationOpen } = this.props;
     return (
       <div id={ styles.clientFooterContainer }>
         <CloseFooterBtn 
-          closeFooter={ this.closeFooter }
+          closeFooter={ toggleClientMessenger }
         />
         <div className={ styles.pushRight }>
           <UIComponents />

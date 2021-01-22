@@ -3,3 +3,10 @@
   --toggle-msg-btn-border-color: rgb(26, 107, 26);
   --toggle-msg-btn-border-color-hover:  rgb(65, 138, 65);
 }
+html, body {
+  background-color: rgb(156, 153, 153);
+}
+
+#root {
+  background-color: red;
+}

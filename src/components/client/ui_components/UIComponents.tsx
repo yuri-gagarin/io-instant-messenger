@@ -1,6 +1,6 @@
 import React from "react";
 // additional components //
-import AdminOnlineBlinker from "./AdminOnlineBlinker";
+import AdminOnlineBlinker from "./VendorOnlineBlinker";
 import VendorInformation from "./VendorInformation";
 // css and style imports //
 import styles from "./css/UIComponentsStyles.module.css";

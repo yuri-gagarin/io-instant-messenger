@@ -4,7 +4,7 @@ import { ClientMessenger } from 'instant-messenger'
 import 'instant-messenger/dist/index.css'
 
 const App = () => {
-  return <ClientMessenger />
+  return <ClientMessenger adminOnline={ false } />
 }
 
 export default App
