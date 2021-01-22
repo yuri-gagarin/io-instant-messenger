@@ -1,19 +1,7 @@
-import * as React from 'react'
-import MessageContainerComponent from './components/containers/MessageContainerComponent'
-import MessagesFooter from "./components/containers/MessagesFooter";
-import styles from './styles.module.css'
+//import * as React from 'react'
+//import styles from './styles.module.css'
+//
+import ClientMessengerComponent from "../src/components/client/ClientMessenger";
 
-interface Props {
-  text: string
-}
+export const ClientMessenger = ClientMessengerComponent;
 
-const InstantMessenger = ({ text }: Props) => {
-  return (
-    <div className={styles.test}>Whatever Component: {text}
-      <MessageContainerComponent title={"My messages"} />
-      <MessagesFooter title={"footer"} />
-    </div>
-  );
-}
-
-export default InstantMessenger;

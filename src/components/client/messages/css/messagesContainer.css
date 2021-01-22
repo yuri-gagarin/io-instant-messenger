@@ -1,0 +1,9 @@
+.messagesContainer {
+  height: 300px;
+  width: 250px;
+  border: 1px solid grey;
+  position: fixed;
+  right: 0.5em;
+  bottom: 55px;
+  border-radius: 5px;
+}

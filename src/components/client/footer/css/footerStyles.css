@@ -1,6 +1,6 @@
-.footerContainer {
+#clientFooterContainer {
   width: 100%;
-  height: 75px;
+  height: 50px;
   border: 1px solid grey;
   position: fixed;
   left: 0;
