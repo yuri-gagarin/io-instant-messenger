@@ -26,7 +26,6 @@ class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessen
   
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <ClientFooter 

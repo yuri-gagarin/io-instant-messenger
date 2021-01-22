@@ -1,0 +1,35 @@
+.vendorInformationContainer {
+  /* border: 1px solid grey; */
+  display: flex;
+  align-items: center;
+}
+
+.vendorInformationText {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  margin-right: 0.25em;
+}
+
+/* user icons and icon animations */
+.offlineIcon {
+  color: rgb(114, 33, 8);
+  margin-right: 0.25em;
+}
+.onlineIcon {
+  color: blue;
+  margin-right: 0.25em;
+  font-size: 1em;
+  animation: animateOnlineIcon 1.5s ease-in-out infinite;
+}
+
+@keyframes animateOnlineIcon {
+  from {
+    opacity: 1;
+    color: blue;
+  }
+  to {
+    opacity: 0.75;
+    color: green;
+  }
+}
