@@ -11,29 +11,27 @@ type Props = {
 }
 type State = {
   messages: string[];
-  styles: {
-    opened: string;
-    closed: string;
-  }
 }
 
 class MessagesContainer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { messages: [], styles: { opened: "", closed: styles.closed } }
+    this.state = { messages: [] }
   }
 
   componentDidMount() {
     this.setState({
-      messages: [ "one", "two", "three" ],
-      styles: {
-        ...this.state.styles
-      }
+      messages: [ 
+        "one", "two", "threefaefefef efefefefegegeg feffefefeffeffefefefefefefefe", "faefe", "feafef", "faefefefea", "fafeafe", "faefefae", "feafe"
+      ],
     });
   }
 
   componentWillUnmount() {
 
+  }
+  sendMessage = (messageData: string) => {
+    this.setState({ messages: [ ...this.state.messages, messageData ] });
   }
 
   render() {
@@ -41,7 +39,7 @@ class MessagesContainer extends React.Component<Props, State> {
     return (
       <div className={ `${styles.messagesContainer} ${styles.slideIntoView} ${hideMessagesContainerAnimation}` }>
         <MessagesWindow messages={ this.state.messages } />
-        <MessagesInput />
+        <MessagesInput sendMessage={ this.sendMessage }/>
       </div>
     )
   }

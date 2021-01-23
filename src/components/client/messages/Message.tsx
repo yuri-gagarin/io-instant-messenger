@@ -1,9 +1,11 @@
 import React from "react";
 // css imports //
-import style from "./css/message.css";
+import style from "./css/message.module.css";
 
+type Sender = "vendor" | "user";
 type Props = {
   messageData: string;
+  sender?: Sender;
 }
 
 const Message: React.FC<Props> = ({ messageData }) => {

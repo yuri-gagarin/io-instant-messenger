@@ -53,7 +53,11 @@ class ClientFooterContainer extends React.Component<ClientFooterProps, ClientFoo
   // Should first animate down and then fire off event to unmount component //
   closeFooter = () => {
     this.setState({ 
-      customCss: { ...this.state.customCss, hideFooterAnimation: styles.moveOutOfView } 
+      customCss: { 
+        ...this.state.customCss, 
+        hideFooterAnimation: styles.moveOutOfView, 
+        hideMessagesContainerAnimation: styles.moveMessengerWindowOutOfView 
+      } 
     });
     setTimeout(() => {
       this.props.closeClientMessengerFooter();

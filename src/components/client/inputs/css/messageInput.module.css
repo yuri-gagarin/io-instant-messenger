@@ -1,8 +1,8 @@
 .messagesInputDiv {
+  height: 40px;
   width: 90%;
-  border-right: 1px solid grey;
-  border-bottom: 1px solid grey;
-  border-left: 1px solid grey;
+  border: 1px solid var(--general-border-color);
+  border-radius: 2px;
 }
 
 .messagesInputSpan {
@@ -10,10 +10,19 @@
   height: 100%;
   position: relative;
   display: flex;
+  align-items: center;
   flex-direction: row;
 }
-
-.messagesInputTag { 
+/* message text area */
+.messagesTextAreaTag { 
   width: 80%;
+  height: 90%;
+  resize: none;
   overflow-wrap: break-word;
+  overflow: hidden;
+}
+.messagesTextAreaTag:focus {
+  border: 1px solid rgb(9, 119, 55);
+  border-radius: 2px;
+  box-shadow: 0 0 5px #1c7a30;
 }

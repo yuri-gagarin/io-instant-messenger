@@ -1,3 +1,4 @@
+/* send message button styles */
 .sendMessageButton {
   position: relative;
   width: 20%;
@@ -5,7 +6,11 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
-  background-color: green;
+  align-items: center;
+  background-color: var(--message-send-button-color);
   color: white;
   text-emphasis: bold;
+}
+.sendMessageButton:hover {
+  background-color: var(--message-send-button-color-hover);
 }

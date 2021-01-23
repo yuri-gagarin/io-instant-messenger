@@ -1,6 +1,11 @@
 .messagesWindowContainer {
-  border: 1px solid grey;
-  height: 85%;
+  height: 300px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: 1px solid var(--general-border-color);
+  border-radius: 2px;
   width: 90%;
-  justify-content: center;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }

@@ -1,7 +1,17 @@
 /* add css module styles here (optional) */
 :root {
+  /**/
+  --general-border-color: rgb(8, 66, 143);
+  --general-border-coor-hover: rgb(9, 86, 185);
+  /**/
   --toggle-msg-btn-border-color: rgb(26, 107, 26);
   --toggle-msg-btn-border-color-hover:  rgb(65, 138, 65);
+  /**/
+  --message-send-button-color: rgb(27, 90, 27);
+  --message-send-button-color-hover: rgb(44, 150, 44);
+  /**/
+  --vendor-read-message-bg-color: rgb(18, 136, 18);
+  --vendor-new-message-bg-collor: rgb(18, 122, 18);
 }
 html, body {
   background-color: rgb(156, 153, 153);

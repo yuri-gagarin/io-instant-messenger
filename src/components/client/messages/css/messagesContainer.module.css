@@ -1,25 +1,23 @@
+/* messages container */
 .messagesContainer {
   position: fixed;
-  bottom: 60px;
-  height: 300px;
-  width: 250px;
-  padding-top: 10px;
-  border: 1px solid red;
   right: 1em;
-  border-radius: 5px;
+  bottom: 60px;
   display: flex;
+  height: auto;
+  width: 250px;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 2px solid var(--general-border-color);
+  border-radius: 5px;
+  background-color: white;
 }
-
+/* mount and slide into view animation */
 .slideIntoView {
   animation: slideMessagesContainerIntoView 300ms linear;
 }
-.slideOutOfView {
-  transform: translateX(300px);
-  transition: transform 300ms linear;
-}
-
 @keyframes slideMessagesContainerIntoView {
   0% {
     transform: translateX(300px);
