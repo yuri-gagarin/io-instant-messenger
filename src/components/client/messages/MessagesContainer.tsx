@@ -6,8 +6,8 @@ import MessagesInput from "../inputs/MessagesInput";
 import styles from "./css/messagesContainer.module.css";
 
 type Props = {
-  open: boolean;
   messages: string[];
+  hideMessagesContainerAnimation: string;
 }
 type State = {
   messages: string[];
@@ -27,8 +27,7 @@ class MessagesContainer extends React.Component<Props, State> {
     this.setState({
       messages: [ "one", "two", "three" ],
       styles: {
-        ...this.state.styles,
-        opened: (this.props.open ? styles.opened : "")
+        ...this.state.styles
       }
     });
   }
@@ -38,9 +37,9 @@ class MessagesContainer extends React.Component<Props, State> {
   }
 
   render() {
-    const { opened } = this.state.styles;
+    const { hideMessagesContainerAnimation } = this.props;
     return (
-      <div className={ `${styles.messagesContainer} ${opened}` }>
+      <div className={ `${styles.messagesContainer} ${styles.slideIntoView} ${hideMessagesContainerAnimation}` }>
         <MessagesWindow messages={ this.state.messages } />
         <MessagesInput />
       </div>

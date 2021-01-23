@@ -1,4 +1,5 @@
-#clientFooterContainer {
+/* client messages footer styles */
+.clientFooterContainer {
   display: flex;
   position: fixed;
   left: 0;
@@ -10,26 +11,37 @@
   padding-bottom: 0.25em;
   align-items: center;
 }
+/* footer animations */
 .moveIntoView {
   animation: moveFooterIntoView 250ms linear; 
 }
+.moveOutOfView {
+  transform: translateY(60px);
+  transition: transform 200ms linear;
+}
+@keyframes moveFooterIntoView {
+  0% {
+    transform: translateY(60px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  90% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* messenger window close animation */
+.moveMessengerWindowOutOfView {
+  transform: translateX(300px);
+  transition: transform 200ms linear;
+}
+/* */
 .pushRight {
   display: flex;
   margin-left: auto;
   align-items: center;
 }
 
-.footerClosing {
-  transition: all 0.25s linear;
-  transform: translateY(60px);
-}
-
-@keyframes moveFooterIntoView {
-  0% {
-    transform: translateY(60px);
-  }
-  100% {
-    border: 4px solid red;
-    transform: translateY(0px);
-  }
-}

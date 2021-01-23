@@ -1,7 +1,6 @@
 import React from "react";
 //
-import ClientFooter from "./footer/ClientFooterContainer";
-import MessagesContainer from "./messages/MessagesContainer";
+import ClientMessengerFooter from "./footer/ClientFooterContainer";
 import ClosedMessengerUI from "./ui_components/ClosedMessengerUI";
 
 type ClientMessengerProps = {
@@ -9,72 +8,37 @@ type ClientMessengerProps = {
 }
 
 type ClientMessengerState = {
-  clientMessengerOpen: boolean;
-  conversationOpen: boolean;
-  clientMessengerClosing: boolean;
-  clientMessennerOpening: boolean;
+  clientMessengerFooterOpen: boolean;
 }
 
 class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessengerState> {
   constructor(props: ClientMessengerProps) {
     super(props);
     this.state = {
-      conversationOpen: false,
-      clientMessengerOpen: true,
-      clientMessengerClosing: false,
-      clientMessennerOpening: false
+      clientMessengerFooterOpen: true,
     }
   }
   
-  componentDidMount() {
-    this.props.adminOnline ? this.setState({ clientMessengerOpen: true }) : this.setState({ clientMessengerOpen: true })
-  }
-
-  toggleConversation = () => {
-    this.setState({
-      conversationOpen: !this.state.conversationOpen
-    });
-  }
-
-  toggleClientMessenger = () => {
-    this.setState({
-      clientMessengerClosing: true
-    });
-    setTimeout(() => {
-      this.setState({ clientMessengerOpen: false })
-    });
-  }
-
-  closeFooter = () => {
-    
+  closeClientMessengerFooter = () => {
+    this.setState({ clientMessengerFooterOpen: false });
   }
 
   handleOpenClientMessenger = () => {
     this.setState({
-      clientMessengerOpen: true,
-      clientMessennerOpening: true,
-      clientMessengerClosing: false
+      clientMessengerFooterOpen: true
     });
   };
 
   render() {
-    const { clientMessengerOpen } = this.state;
+    const { clientMessengerFooterOpen } = this.state;
     const { adminOnline } = this.props;
-    console.log(clientMessengerOpen)
+
     return (
-      clientMessengerOpen ?
-        <div>
-          <ClientFooter 
-            toggleConversation={ this.toggleConversation } 
-            toggleClientMessenger={ this.toggleClientMessenger }
-            conversationOpen={ this.state.conversationOpen }
-            clientMessengerOpen={ this.state.clientMessengerOpen }
-            footerClosing={ this.state.clientMessengerClosing }
-          />
-          {
-            this.state.conversationOpen ? <MessagesContainer open={this.state.conversationOpen} messages={[]} /> : null
-          }
-        </div>
+      clientMessengerFooterOpen 
+      ?
+        <ClientMessengerFooter 
+          closeClientMessengerFooter={this.closeClientMessengerFooter}
+        />
       : 
         <ClosedMessengerUI 
           adminOnline={ adminOnline }
@@ -82,6 +46,6 @@ class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessen
         />
     );
   }
-}
+};
 
 export default ClientMessenger;

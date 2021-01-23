@@ -1,54 +1,85 @@
 import React from "react";
 // additional components //
+import MessagesContainer from "../messages/MessagesContainer";
 import ToggleConversation from "../buttons/ToggleConversations";
 import CloseFooterBtn from "../buttons/CloseFooterButton";
 import UIComponents from "../ui_components/UIComponents";
 // styles and css //
 import styles from "./css/footerStyles.module.css";
 
-
 interface ClientFooterProps {
-  toggleConversation(): void;
-  toggleClientMessenger(): void;
-  conversationOpen: boolean;
-  clientMessengerOpen: boolean;
-  footerClosing?: boolean;
-  footerOpening?: boolean;
+  closeClientMessengerFooter(): void;
 }
 
 type ClientFooterState = {
-  footerClosing: boolean;
-  footerOpening: boolean;
+  conversationOpen: boolean;
+  customCss: {
+    hideFooterAnimation: string;
+    hideMessagesContainerAnimation: string;
+  }
 }
 
 class ClientFooterContainer extends React.Component<ClientFooterProps, ClientFooterState> {
   constructor(props: ClientFooterProps) {
     super(props);
-    this.state = { footerClosing: false , footerOpening: false };
+    this.state = { 
+      conversationOpen: false, 
+      customCss: { hideFooterAnimation: "", hideMessagesContainerAnimation: "" } 
+    };
   }
+  // lifecycle methods //
   componentDidMount() {
-    this.setState({ footerOpening: true })
+    setTimeout(() => {
+      this.setState({ conversationOpen: true });
+    }, 200);
   }
-  closeFooter = () => {
+  // mounts <MessagesContainer> component and toggles animation //
+  toggleConversationComponent = () => {
+    if (this.state.conversationOpen) {
+      this.setState({
+        customCss: { ...this.state.customCss, hideMessagesContainerAnimation: styles.moveMessengerWindowOutOfView }
+      });
+      setTimeout(() => {
+        this.setState({ 
+          conversationOpen: false ,
+          customCss: { ...this.state.customCss, hideMessagesContainerAnimation: "" }
+        });
+      }, 500);
+    } else {
+      this.setState({ conversationOpen: true });
+    }
+  }
 
+  // Should first animate down and then fire off event to unmount component //
+  closeFooter = () => {
+    this.setState({ 
+      customCss: { ...this.state.customCss, hideFooterAnimation: styles.moveOutOfView } 
+    });
+    setTimeout(() => {
+      this.props.closeClientMessengerFooter();
+    }, 300);
   }
 
   render() {
-    const { toggleConversation, toggleClientMessenger, conversationOpen, footerClosing } = this.props;
+    const { conversationOpen } = this.state;
+    const { hideFooterAnimation, hideMessagesContainerAnimation } = this.state.customCss;
+
     return (
-      <div id={ styles.clientFooterContainer } className={`${footerClosing ? styles.footerClosing : ""} ${styles.moveIntoView}`}>
+      <div className={ `${styles.clientFooterContainer} ${styles.moveIntoView} ${hideFooterAnimation}` }>
         <CloseFooterBtn 
-          closeFooter={ toggleClientMessenger }
+          closeFooter={ this.closeFooter }
         />
         <div className={ styles.pushRight }>
           <UIComponents />
           <ToggleConversation 
             conversationOpen={ conversationOpen } 
             buttonText={ conversationOpen ? 'Close' : 'Open' }
-            toggleConversation={ toggleConversation }
+            toggleConversation={ this.toggleConversationComponent }
           />
         </div>
-        
+        {
+          conversationOpen ? <MessagesContainer messages={[]} hideMessagesContainerAnimation={hideMessagesContainerAnimation} /> : null
+        }
       </div>
     );
   }
