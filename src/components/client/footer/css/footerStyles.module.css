@@ -40,6 +40,12 @@
   transition: transform 200ms linear;
 }
 /* */
+.footerUIContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1em;
+  width: 278px;
+}
 .pushRight {
   display: flex;
   margin-left: auto;

@@ -11,7 +11,9 @@
   --message-send-button-color-hover: rgb(44, 150, 44);
   /**/
   --vendor-read-message-bg-color: rgb(18, 136, 18);
-  --vendor-new-message-bg-collor: rgb(18, 122, 18);
+  --vendor-new-message-bg-color: rgb(18, 122, 18);
+  /**/
+  --user-message-bg-color:rgb(42, 97, 179);
 }
 html, body {
   background-color: rgb(156, 153, 153);

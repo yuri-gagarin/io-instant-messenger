@@ -73,7 +73,7 @@ class ClientFooterContainer extends React.Component<ClientFooterProps, ClientFoo
         <CloseFooterBtn 
           closeFooter={ this.closeFooter }
         />
-        <div className={ styles.pushRight }>
+        <div className={ `${styles.footerUIContainer} ${styles.pushRight}` }>
           <UIComponents />
           <ToggleConversation 
             conversationOpen={ conversationOpen } 

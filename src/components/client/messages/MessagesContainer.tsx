@@ -5,12 +5,19 @@ import MessagesInput from "../inputs/MessagesInput";
 // css imports //
 import styles from "./css/messagesContainer.module.css";
 
+// data generation remove before prod build //
+import { generateMockMessages } from "../../../mock_data/messageGenerator";
+import { MessageData } from "./custom_types/typeDeclratations";
+
+const messages = generateMockMessages(15);
+//
+
 type Props = {
   messages: string[];
   hideMessagesContainerAnimation: string;
 }
 type State = {
-  messages: string[];
+  messages: MessageData[];
 }
 
 class MessagesContainer extends React.Component<Props, State> {
@@ -21,9 +28,7 @@ class MessagesContainer extends React.Component<Props, State> {
 
   componentDidMount() {
     this.setState({
-      messages: [ 
-        "one", "two", "threefaefefef efefefefegegeg feffefefeffeffefefefefefefefe", "faefe", "feafef", "faefefefea", "fafeafe", "faefefae", "feafe"
-      ],
+      messages: [ ...messages ]
     });
   }
 
@@ -31,7 +36,13 @@ class MessagesContainer extends React.Component<Props, State> {
 
   }
   sendMessage = (messageData: string) => {
-    this.setState({ messages: [ ...this.state.messages, messageData ] });
+    const message: MessageData = { 
+      sender: "user", content: 
+      messageData, 
+      sentAt: new Date(Date.now()).toString() 
+    };
+
+    this.setState({ messages: [ ...this.state.messages, message ] });
   }
 
   render() {

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from "react";
 // additonal components //
 import Message from "./Message";
+// additional type definitions //
+import { MessageData } from "./custom_types/typeDeclratations";
 // css imports //
 import styles from "./css/messagesWindow.css";
 
 type Props = {
-  messages: string[];
+  messages: MessageData[]
 }
 
 

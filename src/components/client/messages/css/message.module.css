@@ -1,13 +1,34 @@
 /** message component container **/
 .messageDiv {
   display: flex;
-  width: 100%;
+  margin-right: 0 auto;
+  flex-direction: column;
   margin-bottom: 1%;
   padding: 2px 2px 2px 2px;
 }
+/** vendor info div styles (displayed by vendor messages) */
+.messageSenderInfo {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  font-size: small;
+  color: rgb(94, 95, 95);
+}
+.messageSenderInfo > span {
+  position: relative;
+  bottom: 2px;
+}
+.messageSenderAvatar {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--vendor-read-message-bg-color);
+  margin-right: 3px;
+}
+
+/** general message content div style */
 .messageContent {
   padding: 0 0.5em 0.25em 0.5em;
-  border-radius: 10px 10px 10px 0px;
   background-color: var(--vendor-read-message-bg-color);
   color: white;
   height: auto;
@@ -15,8 +36,23 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: inline-block;
-  -webkit-box-shadow: 0px 1px 2.5px 0px rgba(29,133,13,1);
-  -moz-box-shadow: 0px 1px 2.5px 0px rgba(29,133,13,1);
-  box-shadow: 0px 1px 2.5px 0px rgba(29,133,13,1);
+  display: flex;
+}
+/** vendor message content div substyle (should be on the left) */
+.vendorMessage {
+  align-self: flex-start;
+  background-color: var(--vendor-new-message-bg-color);
+  border-radius: 12px 12px 12px 0px;
+  -webkit-box-shadow: 0px 0.5px 2.5px 0px rgba(29,133,13,1);
+  -moz-box-shadow: 0px 0.5px 2.5px 0px rgba(29,133,13,1);
+  box-shadow: 0px 0.5px 2.5px 0px rgba(29,133,13,1);
+}
+/** user message content div substyle (should be on the right) */
+.userMessage {
+  align-self: flex-end;
+  background-color: var(--user-message-bg-color);
+  border-radius: 12px 12px 0px 12px;
+  -webkit-box-shadow: 0px 0.5px 2.5px 0px rgb(46, 95, 170);
+  -moz-box-shadow: 0px 0.5px 2.5px 0px rgb(46, 95, 170);
+  box-shadow: 0px 0.5px 2.5px 0px rgb(46, 95, 170);
 }

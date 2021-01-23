@@ -1,15 +1,15 @@
 #clientToggleConversationBtn {
   display: flex;
-  width: auto;
   height: 40px;
+  width: 40%;
   padding-left: 0.25em;
   padding-right: 0.25em;
-  margin-right: 1em;
   border: 2.5px solid var(--toggle-msg-btn-border-color);
   border-radius: 5px;
   cursor: pointer;
   user-select: none;
   align-items: center;
+  justify-content: center;
 }
 #clientToggleConversationBtn:hover {
   border-color: var(--toggle-msg-btn-border-color-hover);
@@ -21,6 +21,7 @@
 #clientToggleConversationBtn > i {
   font-size: 1.25em;
 }
+/** Icon animation for the toggle button **/
 .animateIcon {
   animation: tiltIconBackAndForth 1s linear;
 }

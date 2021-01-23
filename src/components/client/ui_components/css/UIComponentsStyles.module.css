@@ -1,9 +1,9 @@
 .uiComponentsContainer {
   display: flex;
   align-items: center;
-  border: 1px solid grey;
   height: 40px;
-  border: 2.5px solid grey;
-  margin-right: 1em;
-  width: auto;
+  border: 2.5px solid var(--general-border-color);
+  border-radius: 5px;
+  width: 100%;
+  margin-right: 4px;
 }

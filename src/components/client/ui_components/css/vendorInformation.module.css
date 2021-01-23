@@ -2,6 +2,7 @@
   /* border: 1px solid grey; */
   display: flex;
   align-items: center;
+  margin-left: 1em;
 }
 
 .vendorInformationText {
@@ -17,19 +18,26 @@
   margin-right: 0.25em;
 }
 .onlineIcon {
-  color: blue;
+  color: green;
   margin-right: 0.25em;
   font-size: 1em;
-  animation: animateOnlineIcon 1.5s ease-in-out infinite;
+  animation: animateOnlineIcon 3.5s linear infinite;
 }
 
 @keyframes animateOnlineIcon {
-  from {
-    opacity: 1;
-    color: blue;
+  0% {
+    transform: scale(1.0);
   }
-  to {
-    opacity: 0.75;
-    color: green;
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% { 
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.1);
   }
 }
