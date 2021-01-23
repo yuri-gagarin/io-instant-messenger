@@ -1,20 +1,29 @@
 import React from "react";
 // additional components //
 import AdminOnlineBlinker from "./VendorOnlineBlinker";
-import VendorInformation from "./VendorInformation";
+import VendorInformationComp from "./VendorInformation";
+import NewMessageNotification from "../messages/NewMessageNotification";
+// custom types and interfaces //
+import { VendorInformation } from "../_type_declarations/clientMessengerTypes";
 // css and style imports //
 import styles from "./css/UIComponentsStyles.module.css";
 
-class UIComponents extends React.Component {
+interface Props {
+  vendorOnline: boolean;
+  vendorInformation?: VendorInformation;
+}
 
-  render() {
-    return (
-      <div className={styles.uiComponentsContainer}>
-        <VendorInformation vendorOnline={ true } vendorInformation={ "Vendor offline" } />
-        <AdminOnlineBlinker vendorOnline={ true } />
-      </div>
-    )
-  }
+const UIComponents: React.FC<Props> = ({ vendorOnline, vendorInformation, children }): JSX.Element => {
+
+  return (
+    <div className={styles.uiComponentsContainer}>
+      <VendorInformationComp vendorOnline={ vendorOnline } vendorInformation={ vendorInformation } >
+        <NewMessageNotification numberOfNewMessages={0} />
+      </VendorInformationComp>
+      <AdminOnlineBlinker vendorOnline={ vendorOnline } />
+      { children }
+    </div>
+  );
 };
 
 export default UIComponents;

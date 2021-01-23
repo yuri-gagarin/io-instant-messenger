@@ -14,6 +14,8 @@
   --vendor-new-message-bg-color: rgb(18, 122, 18);
   /**/
   --user-message-bg-color:rgb(42, 97, 179);
+  /** backgrounds */
+  --general-light-blue-bg-color: rgb(55, 119, 216);
 }
 html, body {
   background-color: rgb(156, 153, 153);

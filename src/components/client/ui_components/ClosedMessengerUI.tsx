@@ -7,7 +7,7 @@ import styles from "./css/closedMessengerUI.module.css";
 
 interface Props {
   handleOpenClientMessenger(e: any):void;
-  adminOnline: boolean;
+  vendorOnline: boolean;
 }
 interface State {
   showDescriptionCSS: string;
@@ -40,17 +40,12 @@ class ClosedMessengerUI extends React.Component<Props, State> {
 
   render() {
     const { showDescriptionCSS, hideDescriptionCSS, componentClosingCSS } = this.state;
-    const { adminOnline } = this.props;
+    const { vendorOnline } = this.props;
 
     return (
       <div className={ `${styles.closedMessengerUIContainer} ${styles.slideIntoView} ${componentClosingCSS}` }>
         <div className={ styles.blinkerHolder }>
-          <div className={ styles.blinkerDescription}>
-            { adminOnline ? "Online" : "Offline" }
-          </div>
-          <div>         
-             <VendorOnlineBlinker vendorOnline={ this.props.adminOnline } />
-          </div>
+          <VendorOnlineBlinker vendorOnline={ this.props.vendorOnline } />
         </div>
         <OpenClientMessenger 
           handleOpenClientMessenger={ this.listenForComponentClose }
@@ -60,7 +55,7 @@ class ClosedMessengerUI extends React.Component<Props, State> {
         />
         <div className={`${styles.closedMessengerUIChatDirections} ${showDescriptionCSS} ${hideDescriptionCSS}` 
         }>
-          { adminOnline ? "Chat With Us" : "Live chat offline" }
+          { vendorOnline ? "Chat With Us" : "Live chat offline" }
         </div>
       </div>
     )

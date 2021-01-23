@@ -1,13 +1,15 @@
 import React from "react";
+// additional types and interfaces //
+import { VendorInformation } from "../_type_declarations/clientMessengerTypes";
 // styles and css imports //
 import styles from "./css/vendorInformation.module.css";
 
 interface Props {
   vendorOnline?: boolean;
-  vendorInformation?: string;
+  vendorInformation?: VendorInformation;
 }
 
-const VendorInformation: React.FC<Props> = ({ vendorOnline, vendorInformation }): JSX.Element => {
+const VendorInformationComponent: React.FC<Props> = ({ vendorOnline, vendorInformation, children }): JSX.Element => {
 
   return (
     <div className={ styles.vendorInformationContainer }>
@@ -16,9 +18,10 @@ const VendorInformation: React.FC<Props> = ({ vendorOnline, vendorInformation })
           ? <span><i className={ `${"far fa-user"} ${styles.onlineIcon}` }></i></span>
           : <span><i className={ `${"fas fa-user-slash"} ${styles.offlineIcon}` }></i></span>
       }
-      <span className={ styles.vendorInformationText}>{ vendorInformation }</span>
+      <span className={ styles.vendorInformationText}>{ vendorInformation?.firstName ? vendorInformation.firstName : "Offline" }</span>
+      { children }
     </div>
   );
 };
 
-export default VendorInformation;
+export default VendorInformationComponent;

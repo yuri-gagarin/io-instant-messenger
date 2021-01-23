@@ -1,0 +1,17 @@
+.newMessageNotificationContainer {
+  height: 26px;
+  width: 26px;
+  background-color: var(--general-light-blue-bg-color);
+  position: absolute;
+  left: -13px;
+  top: -13px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newMessageNotificationText {
+  color: white;
+}

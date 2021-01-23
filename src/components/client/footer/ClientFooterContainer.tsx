@@ -4,11 +4,16 @@ import MessagesContainer from "../messages/MessagesContainer";
 import ToggleConversation from "../buttons/ToggleConversations";
 import CloseFooterBtn from "../buttons/CloseFooterButton";
 import UIComponents from "../ui_components/UIComponents";
+// addtional types and interfaces //
+import { VendorInformation } from "../_type_declarations/clientMessengerTypes";
 // styles and css //
 import styles from "./css/footerStyles.module.css";
 
+
 interface ClientFooterProps {
   closeClientMessengerFooter(): void;
+  vendorOnline: boolean;
+  vendorInformation?: VendorInformation;
 }
 
 type ClientFooterState = {
@@ -65,25 +70,27 @@ class ClientFooterContainer extends React.Component<ClientFooterProps, ClientFoo
   }
 
   render() {
+    const { vendorOnline, vendorInformation } = this.props;
     const { conversationOpen } = this.state;
     const { hideFooterAnimation, hideMessagesContainerAnimation } = this.state.customCss;
 
     return (
       <div className={ `${styles.clientFooterContainer} ${styles.moveIntoView} ${hideFooterAnimation}` }>
+        {
+          conversationOpen ? <MessagesContainer messages={[]} hideMessagesContainerAnimation={hideMessagesContainerAnimation} /> : null
+        }
         <CloseFooterBtn 
           closeFooter={ this.closeFooter }
         />
         <div className={ `${styles.footerUIContainer} ${styles.pushRight}` }>
-          <UIComponents />
+          <UIComponents vendorOnline={ vendorOnline } vendorInformation={vendorInformation} />
           <ToggleConversation 
             conversationOpen={ conversationOpen } 
             buttonText={ conversationOpen ? 'Close' : 'Open' }
             toggleConversation={ this.toggleConversationComponent }
           />
         </div>
-        {
-          conversationOpen ? <MessagesContainer messages={[]} hideMessagesContainerAnimation={hideMessagesContainerAnimation} /> : null
-        }
+       
       </div>
     );
   }

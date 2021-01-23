@@ -1,13 +1,13 @@
 .closedMessengerUIContainer {
   position: fixed;
   display: flex;
+  justify-content: center;
   background-color: transparent;
   flex-direction: column;
   height: 100px;
   width: 100px;
   right: 1em;
   bottom: 1em;
-  border: 2px solid red;
 }
 .slideIntoView {
   animation: slideComponentIntoView 100ms linear;
@@ -29,19 +29,16 @@
   }
 }
 .blinkerHolder {
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
 }
 .blinkerDescription {
-  border: 1px solid red;
   margin-left: auto;
 }
 /*
 
 */
 .closedMessengerUIChatDirections {
-  border: 1px solid red;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.75em;
   font-weight: 600;

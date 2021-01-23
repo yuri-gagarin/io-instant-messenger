@@ -4,7 +4,7 @@ import ClientMessengerFooter from "./footer/ClientFooterContainer";
 import ClosedMessengerUI from "./ui_components/ClosedMessengerUI";
 
 type ClientMessengerProps = {
-  adminOnline: boolean;
+  vendorOnline: boolean;
 }
 
 type ClientMessengerState = {
@@ -31,17 +31,18 @@ class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessen
 
   render() {
     const { clientMessengerFooterOpen } = this.state;
-    const { adminOnline } = this.props;
+    const { vendorOnline } = this.props;
 
     return (
       clientMessengerFooterOpen 
       ?
         <ClientMessengerFooter 
-          closeClientMessengerFooter={this.closeClientMessengerFooter}
+          vendorOnline={ this.props.vendorOnline }
+          closeClientMessengerFooter={ this.closeClientMessengerFooter }
         />
       : 
         <ClosedMessengerUI 
-          adminOnline={ adminOnline }
+          vendorOnline={ vendorOnline }
           handleOpenClientMessenger={ this.handleOpenClientMessenger }
         />
     );

@@ -5,7 +5,7 @@ import 'instant-messenger/dist/index.css';
 const { ClientMessenger } = InstantMessenger;
 
 const App = () => {
-  return <ClientMessenger adminOnline={ false } />
+  return <ClientMessenger vendorOnline={ false } />
 }
 
 export default App
