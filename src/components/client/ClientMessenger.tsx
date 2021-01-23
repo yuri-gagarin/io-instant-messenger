@@ -11,18 +11,23 @@ type ClientMessengerProps = {
 type ClientMessengerState = {
   clientMessengerOpen: boolean;
   conversationOpen: boolean;
+  clientMessengerClosing: boolean;
+  clientMessennerOpening: boolean;
 }
+
 class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessengerState> {
   constructor(props: ClientMessengerProps) {
     super(props);
     this.state = {
       conversationOpen: false,
-      clientMessengerOpen: true
+      clientMessengerOpen: true,
+      clientMessengerClosing: false,
+      clientMessennerOpening: false
     }
   }
   
   componentDidMount() {
-    this.props.adminOnline ? this.setState({ clientMessengerOpen: true }) : this.setState({ clientMessengerOpen: false })
+    this.props.adminOnline ? this.setState({ clientMessengerOpen: true }) : this.setState({ clientMessengerOpen: true })
   }
 
   toggleConversation = () => {
@@ -33,21 +38,29 @@ class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessen
 
   toggleClientMessenger = () => {
     this.setState({
-      clientMessengerOpen: false
-    })
+      clientMessengerClosing: true
+    });
+    setTimeout(() => {
+      this.setState({ clientMessengerOpen: false })
+    });
+  }
+
+  closeFooter = () => {
+    
   }
 
   handleOpenClientMessenger = () => {
     this.setState({
-      clientMessengerOpen: true
+      clientMessengerOpen: true,
+      clientMessennerOpening: true,
+      clientMessengerClosing: false
     });
   };
 
   render() {
-    console.log(47);
-    console.log(this.props.adminOnline)
     const { clientMessengerOpen } = this.state;
     const { adminOnline } = this.props;
+    console.log(clientMessengerOpen)
     return (
       clientMessengerOpen ?
         <div>
@@ -56,6 +69,7 @@ class ClientMessenger extends React.Component<ClientMessengerProps, ClientMessen
             toggleClientMessenger={ this.toggleClientMessenger }
             conversationOpen={ this.state.conversationOpen }
             clientMessengerOpen={ this.state.clientMessengerOpen }
+            footerClosing={ this.state.clientMessengerClosing }
           />
           {
             this.state.conversationOpen ? <MessagesContainer open={this.state.conversationOpen} messages={[]} /> : null

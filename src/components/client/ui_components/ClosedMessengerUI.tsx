@@ -12,12 +12,13 @@ interface Props {
 interface State {
   showDescriptionCSS: string;
   hideDescriptionCSS: string;
+  componentClosingCSS: string;
 }
 
 class ClosedMessengerUI extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { showDescriptionCSS: "", hideDescriptionCSS: "" };
+    this.state = { showDescriptionCSS: "", hideDescriptionCSS: "", componentClosingCSS: "" };
   }
 
   listenForMouseEvent = (e: React.MouseEvent) => {
@@ -28,14 +29,21 @@ class ClosedMessengerUI extends React.Component<Props, State> {
       this.setState({ hideDescriptionCSS: styles.chatDirectionsNotVisible, showDescriptionCSS: "" })
     }
   }
+  listenForComponentClose = (e: React.MouseEvent<HTMLElement>) => {
+    this.setState({ componentClosingCSS: styles.slideOutOfView });
+    
+    setTimeout(() => {
+      this.props.handleOpenClientMessenger(e);
+    }, 100);
+    
+  }
 
   render() {
-    const { showDescriptionCSS, hideDescriptionCSS } = this.state;
+    const { showDescriptionCSS, hideDescriptionCSS, componentClosingCSS } = this.state;
     const { adminOnline } = this.props;
-    console.log(36);
-    console.log(this.props.adminOnline)
+
     return (
-      <div className={ styles.closedMessengerUIContainer }>
+      <div className={ `${styles.closedMessengerUIContainer} ${styles.slideIntoView} ${componentClosingCSS}` }>
         <div className={ styles.blinkerHolder }>
           <div className={ styles.blinkerDescription}>
             { adminOnline ? "Online" : "Offline" }
@@ -45,7 +53,7 @@ class ClosedMessengerUI extends React.Component<Props, State> {
           </div>
         </div>
         <OpenClientMessenger 
-          handleOpenClientMessenger={ this.props.handleOpenClientMessenger }
+          handleOpenClientMessenger={ this.listenForComponentClose }
           onMouseEnter={ this.listenForMouseEvent } 
           onMouseLeave={ this.listenForMouseEvent }
           { ...this.props.children }

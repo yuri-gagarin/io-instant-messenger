@@ -9,6 +9,25 @@
   bottom: 1em;
   border: 2px solid red;
 }
+.slideIntoView {
+  animation: slideComponentIntoView 100ms linear;
+}
+.slideOutOfView {
+  transform: translateX(150px);
+  transition: transform 200ms linear;
+}
+
+@keyframes slideComponentIntoView {
+  0% {
+    transform: translateX(60px);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
 .blinkerHolder {
   border: 1px solid red;
   display: flex;
@@ -18,8 +37,6 @@
   border: 1px solid red;
   margin-left: auto;
 }
-
-
 /*
 
 */
@@ -34,12 +51,11 @@
   opacity: 1;
 }
 .chatDirectionsVisible {
-  transition: all 0.5s ease-in;
+  transition: all 0.25s linear;
   transform: translateY(0px);
 }
 .chatDirectionsNotVisible {
-  
-  transition: all 0.5s ease-out;
+  transition: all 0.25s linear;
   transform: translateY(80px);
 }
 

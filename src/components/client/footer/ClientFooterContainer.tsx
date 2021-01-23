@@ -7,26 +7,36 @@ import UIComponents from "../ui_components/UIComponents";
 import styles from "./css/footerStyles.module.css";
 
 
-type ClientFooterProps = {
+interface ClientFooterProps {
   toggleConversation(): void;
   toggleClientMessenger(): void;
   conversationOpen: boolean;
   clientMessengerOpen: boolean;
+  footerClosing?: boolean;
+  footerOpening?: boolean;
 }
 
-class ClientFooterContainer extends React.Component<ClientFooterProps> {
+type ClientFooterState = {
+  footerClosing: boolean;
+  footerOpening: boolean;
+}
+
+class ClientFooterContainer extends React.Component<ClientFooterProps, ClientFooterState> {
   constructor(props: ClientFooterProps) {
     super(props);
+    this.state = { footerClosing: false , footerOpening: false };
   }
-
+  componentDidMount() {
+    this.setState({ footerOpening: true })
+  }
   closeFooter = () => {
 
   }
 
   render() {
-    const { toggleConversation, toggleClientMessenger, conversationOpen } = this.props;
+    const { toggleConversation, toggleClientMessenger, conversationOpen, footerClosing } = this.props;
     return (
-      <div id={ styles.clientFooterContainer }>
+      <div id={ styles.clientFooterContainer } className={`${footerClosing ? styles.footerClosing : ""} ${styles.moveIntoView}`}>
         <CloseFooterBtn 
           closeFooter={ toggleClientMessenger }
         />
